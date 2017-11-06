@@ -148,7 +148,127 @@ function returnKthToLast(node, k) {
 
 // 2.4 
 function partition(node, part) {
+  const leftArr = [];
+  const rightArr = [];
   const leftList = new LinkedList();
   const rightList = new LinkedList();
-  
+  let current = node;
+  while (current !== null) {
+    if (current.value >= part) {
+      rightArr.push(current.value);
+      rightList.addLast(current);
+    } else {
+      leftArr.push(current.value);
+      leftList.addLast(current);
+    }
+    current = current.next;
+  }
+  current = rightList.head;
+  while (current !== null) {
+    leftList.addLast(current);
+    current = current.next;
+  }
+  return leftList;
 }
+
+partition(link.head, 20);
+
+// 2.5
+
+const link1 = new LinkedList();
+link1.addLast(7);
+link1.addLast(1);
+link1.addLast(6);
+
+const link2 = new LinkedList();
+link2.addLast(5);
+link2.addLast(9);
+link2.addLast(2);
+
+function sumList(node1, node2) {
+  let num1 = [];
+  let num2 = [];
+  let current1 = node1;
+  let current2 = node2;
+  while (current1 !== null) {
+    num1.unshift(`${current1.value}`);
+    current1 = current1.next;
+  }
+  while (current2 !== null) {
+    num2.unshift(`${current2.value}`);
+    current2 = current2.next;
+  }
+  num1 = Number(num1.join(""));
+  num2 = Number(num2.join(""));
+  const tot = num1 + num2;
+  const newList = new LinkedList();
+  String(tot).split("").reverse().forEach(num => {
+    newList.addLast(Number(num));
+  });
+  return newList;
+}
+
+// sumList(link1.head, link2.head);
+
+// 2.6 
+const pal = new LinkedList();
+pal.addLast("a");
+pal.addLast("h");
+pal.addLast("a");
+
+function isPalindrome(node) {
+  const arr = [];
+  let current = node;
+  while (current !== null) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  return arr.join("") === arr.reverse().join("");
+}
+
+isPalindrome(pal.head);
+
+// 2.7
+function intersection(node1, node2) {
+  const arr = [];
+  let current = node1;
+  while (current !== null) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  current = node2;
+  let final = null;
+  while (current !== null) {
+    console.log(current);
+    if (arr.includes(current) && final === null) {
+      final = current;
+    }
+    current = current.next;
+  }
+  return final;
+}
+
+intersection(link1.head, link2.head);
+
+// 2.8 
+const loop = new LinkedList();
+loop.addLast("A");
+loop.addLast("B");
+loop.addLast("C");
+loop.addLast("D");
+loop.addLast("E");
+loop.addLast("C");
+loop.addLast("F");
+
+
+function loopDetect(node) {
+  const arr = [];
+  let current = node;
+  while (!(arr.includes(current.value))) {
+    arr.push(current.value);
+    current = current.next;
+  }
+  return current.value;
+}
+
+loopDetect(loop.head);
