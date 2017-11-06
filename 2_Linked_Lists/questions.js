@@ -123,4 +123,32 @@ function returnKthToLast(node, k) {
   return pointer2;
 }
 
-returnKthToLast(link.head, 2);
+// returnKthToLast(link.head, 2);
+
+// 2.3 
+// function deleteMiddleNode(node, data) {
+//   let current = node;
+//   let count = 0;
+//   while (current !== null) {
+//     if (count !== 0 && current.next !== null && current.value === data) {
+//       const temp = current.prev;
+//       console.log(current.prev.next);
+//       current.prev.next = current.next;
+//       current.next.prev = temp;
+//       break;
+//     } else {
+//       current = current.next;
+//     }
+//     count += 1;
+//   }
+//   return node;
+// }
+
+// deleteMiddleNode(link.head, 20);
+
+// 2.4 
+function partition(node, part) {
+  const leftList = new LinkedList();
+  const rightList = new LinkedList();
+  
+}
