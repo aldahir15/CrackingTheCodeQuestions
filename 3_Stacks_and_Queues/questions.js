@@ -71,7 +71,7 @@ sstack.minimum();
 
 // 3.3 
 
-class Stack {
+class Stack2 {
   constructor(max = 5) {
     this.stack = this;
     this.top = null;
@@ -103,7 +103,7 @@ class Stack {
 
   add() {
     if (this.count + 1 === this.max) {
-      const newStack = new Stack(this.max);
+      const newStack = new Stack2(this.max);
     } else {
       this.count ++;
     }
@@ -123,14 +123,6 @@ class Stack {
   }
 }
 
-class NodeWithMin {
-  constructor(v, next, min) {
-    this.value = v;
-    this.next = next;
-    this.min = min;
-  }
-}
-
 // let sstack = new Stack();
 // sstack.push(5);
 // sstack.push(7);
@@ -141,5 +133,54 @@ class NodeWithMin {
 // 3.4 
 
 class MyQueue {
-  
+  constructor() {
+    this.stackNewest = new Stack();
+    this.stackOldest = new Stack();
+  }
+
+  size() {
+    return this.stackNewest.size() + this.stackOldest.size();
+  }
+
+  add(val) {
+    // Push onto stackNewest, which always has the newest elements on top
+    this.stackNewest.push(val);    
+  }
+
+  shiftStacks() {
+    if (this.stackOldest.isEmpty()) {
+      while (!this.stackNewest.isEmpty()) {
+        this.stackOldest.push(this.stackNewest.pop());
+      }
+    }
+  }
+
+  peek() {
+    this.shiftStacks(); // Ensure stackOldest has the current elements
+    return this.stackOldest.peek(); //retrve the oldest item
+  }
+
+  remove() {
+    this.shiftStacks(); // Ensure stackOldest has the current elements
+    return this.stackOldest.pop(); // pop the oldest item
+  }
+}
+
+// 3.5
+
+function sort(stack) {
+  const newStack = new Stack();
+  while (!stack.isEmpty()) {
+    // Insert each element in stack in sorted order into newStack
+    const temp = stack.pop();
+    while (!newStack.isEmpty() && newStack.peek() > temp) {
+      stack.push(newStack.pop());
+    }
+    newStack.push(temp);
+  }
+
+  // Copy the elements from newStack back to stack
+  while (!newStack.isEmpty()) {
+    stack.push(newStack.pop());
+  }
 }
