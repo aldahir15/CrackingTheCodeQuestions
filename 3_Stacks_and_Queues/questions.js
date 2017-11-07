@@ -70,3 +70,76 @@ sstack.push(7);
 sstack.minimum();
 
 // 3.3 
+
+class Stack {
+  constructor(max = 5) {
+    this.stack = this;
+    this.top = null;
+    this.min = null;
+    this.count = 0;
+    this.max = max;
+  }
+
+  pop() {
+    if (this.top === null) return;
+    const item = this.top.value;
+    this.top = this.top.next;
+    this.count -= 1;
+    return item;
+  }
+
+  push(item) {
+    let newMin;
+    if (this.min === null) {
+      newMin = item;
+    } else {
+      newMin = Math.min(item, this.min);
+    }
+    this.min = newMin;
+    const t = new NodeWithMin(item, this.top, newMin);
+    this.add();
+    this.top = t;
+  }
+
+  add() {
+    if (this.count + 1 === this.max) {
+      const newStack = new Stack(this.max);
+    } else {
+      this.count ++;
+    }
+  }
+
+  peek() {
+    if (this.top === null) return;
+    return this.top.value;
+  }
+
+  isEmpty() {
+    return this.top === null;
+  }
+
+  minimum() {
+    return this.top.min;
+  }
+}
+
+class NodeWithMin {
+  constructor(v, next, min) {
+    this.value = v;
+    this.next = next;
+    this.min = min;
+  }
+}
+
+// let sstack = new Stack();
+// sstack.push(5);
+// sstack.push(7);
+// sstack.push(2);
+// sstack.push(3);
+// sstack.push(1);
+
+// 3.4 
+
+class MyQueue {
+  
+}
