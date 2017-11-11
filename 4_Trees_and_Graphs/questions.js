@@ -83,4 +83,20 @@ function checkBalanced(node, count = 0, arr = []) {
   }
   checkBalanced(node.left, count += 1, arr);
   checkBalanced(node.right, count += 1, arr);
+  arr.reduce(function(sum, value) {
+    return sum + value;
+  }) <= 1;
+}
+
+//4.5 
+
+function validateBST(node, bool = true) {
+  if (node === null) return;
+  if ((node.left !== null && node < node.left) || (node.right !== null && node > node.right)) {
+    bool = false;
+    return bool;
+  }
+  validateBST(node.left, bool);
+  validateBST(node.right, bool);
+  return bool;
 }
