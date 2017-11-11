@@ -69,3 +69,18 @@ function listOfDepth(node, arr = [], list = new LinkedList) {
   listOfDepth(node.left);
   listOfDepth(node.right);
 }
+
+
+// 4.4 
+// Implement a function to check if a binary tree is balanced. For the purposes of the question,
+// a balanced tree is defined to be a tree such that the height of the two subtrees of any 
+// node never differ by moore than one.
+function checkBalanced(node, count = 0, arr = []) {
+  if (node.left === null && node.right === null) {
+    arr.push(count);
+    count -= 1;
+    return;
+  }
+  checkBalanced(node.left, count += 1, arr);
+  checkBalanced(node.right, count += 1, arr);
+}
