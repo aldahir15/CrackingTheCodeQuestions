@@ -100,3 +100,16 @@ function validateBST(node, bool = true) {
   validateBST(node.right, bool);
   return bool;
 }
+
+// 4.6 
+
+function successor(node) {
+   if (node.parent > node) return node.parent;
+   if (node.parent < node || node.parent === null) {
+     let curr = node.right;
+     while (curr) {
+      curr = curr.left;
+     }
+     return curr;
+   } 
+}
