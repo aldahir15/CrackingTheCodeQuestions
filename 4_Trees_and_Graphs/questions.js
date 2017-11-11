@@ -113,3 +113,12 @@ function successor(node) {
      return curr;
    } 
 }
+
+// 4.7
+
+function buildOrder(projects, dependencies) {
+  dependencies.forEach((dep) => {
+    dep[0].child = dep[1];
+    dep[1].parent = dep[0];
+  });
+}
