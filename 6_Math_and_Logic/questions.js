@@ -91,3 +91,27 @@ function findRatio (n) {
   }
   return answer;
 }
+
+// 6.8
+// The Egg-Drop Problem
+
+// 100 floors, Egg breaks in N floor, we have 2 eggs to figure out what N is
+// If we try the first egg at 25, second at 75
+
+// If not at egg1:25 and yes at egg2:75
+// Then move egg1 to 50 and go from there
+
+// If yes at egg1: 25, then move egg2 to 0 and go from there
+
+// 6.9
+// 100 Lockers
+
+function lockersOpen(n) {
+  const arr = Array.new(n).map((el) => el = true);
+  for (let j = 2; j < n; j++) {
+    for (let i = 0; i < n; i+= j) {
+      arr[i] = !arr[i];
+    }
+  }
+  arr.count(false);
+}
