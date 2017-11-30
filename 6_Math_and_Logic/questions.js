@@ -7,9 +7,9 @@
 // 6.2
 
 // P(B) = p
-// [LWW]: (1 - p) * p * p + 
-// [WLW]: p * (1 - p) * p + 
-// [WWL]: p * p * (1 - p) + 
+// [LWW]: (1 - p) * p * p +
+// [WLW]: p * (1 - p) * p +
+// [WWL]: p * p * (1 - p) +
 // [WWW]: p * p * p
 // = 3p^2 - 3p^3 + p^3
 // = 3p^2 - 2p^3
@@ -42,11 +42,11 @@
 // Step 3: Test suspicion that it is impossible even for 8x8 chessboard
 // every domino must have two adjecent squares to place on chessboard
 // cutting opposite corners deprived two squares of adjacent squares
-// 
+//
 // if we viewed a chessboard as alternative black and white squares,
 // two black squares or two white squares have been cut off
-// 
-// a domino needs a black square and a white square to occupy the chessboard 
+//
+// a domino needs a black square and a white square to occupy the chessboard
 
 // 6.4
 
@@ -59,3 +59,11 @@
 // then the probability of colliding is 1 - 2 / (2 ^ 3)
 
 // the generalized solution for non-collision is 1 - 2 / (2 ^ n)
+
+
+// 6.5
+// Jugs of Water
+// 5 - quart jug, 3 - quart jug, unlimited supply of water but no measuring cups.
+// How would we come up with exactly four quarts of water?
+// Fill up 8 3-quarts, then take away 4 5-quarts, we will be left with 4-quarts
+// This works because 3(8) = 24 - 5(4) = 24-20 = 4
