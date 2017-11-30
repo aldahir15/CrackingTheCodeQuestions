@@ -63,7 +63,31 @@
 
 // 6.5
 // Jugs of Water
+
 // 5 - quart jug, 3 - quart jug, unlimited supply of water but no measuring cups.
 // How would we come up with exactly four quarts of water?
 // Fill up 8 3-quarts, then take away 4 5-quarts, we will be left with 4-quarts
 // This works because 3(8) = 24 - 5(4) = 24-20 = 4
+
+// 6.6
+// Blue-Eyed Island
+
+// At least one day since the person will see nobody with blue eyes, so you have blue eyes
+// It will take n days, depending on how many people (n)
+
+// 6.7
+// The Apocalypse
+
+// Have at least one girl
+// So if girl at first time -> No more kids, 1 girl, no boys
+// If boy before girl -> More kids until girl, at least 1 boy, 1 girl
+// On average since the chance of having a boy or girl is equal, we can assume that at least every
+// family has one girl
+
+function findRatio (n) {
+  let answer = 0;
+  for (let i = 0; i < n; i++) {
+    answer += (i - 1) / Math.pow(2, i);
+  }
+  return answer;
+}
