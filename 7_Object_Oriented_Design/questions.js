@@ -121,3 +121,5 @@ table.join(eric);
 
 /* build until dealing of first hand */
 table.runGame();
+
+// 7.2
